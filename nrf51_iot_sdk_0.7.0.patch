@@ -1,0 +1,339 @@
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble.h
+index 439f81c..de61490 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble.h
+@@ -32,18 +32,16 @@
+ /**
+  * @brief Common API SVC numbers.
+  */
+-enum BLE_COMMON_SVCS
+-{
+-  SD_BLE_EVT_GET  = BLE_SVC_BASE,       /**< Get an event from the pending events queue. */
+-  SD_BLE_TX_BUFFER_COUNT_GET,           /**< Get the total number of available application transmission buffers from the stack. */
+-  SD_BLE_UUID_VS_ADD,                   /**< Add a Vendor Specific UUID. */
+-  SD_BLE_UUID_DECODE,                   /**< Decode UUID bytes. */
+-  SD_BLE_UUID_ENCODE,                   /**< Encode UUID bytes. */
+-  SD_BLE_VERSION_GET,                   /**< Get the local version information (company id, Link Layer Version, Link Layer Subversion). */
+-  SD_BLE_USER_MEM_REPLY,                /**< User Memory Reply. */
+-  SD_BLE_OPT_SET,                       /**< Set a BLE option. */
+-  SD_BLE_OPT_GET,                       /**< Get a BLE option. */
+-};
++typedef unsigned char BLE_COMMON_SVCS; // enum
++#define SD_BLE_EVT_GET                           (BLE_SVC_BASE +   0)    /**< Get an event from the pending events queue. */
++#define SD_BLE_TX_BUFFER_COUNT_GET               (BLE_SVC_BASE +   1)    /**< Get the total number of available application transmission buffers from the stack. */
++#define SD_BLE_UUID_VS_ADD                       (BLE_SVC_BASE +   2)    /**< Add a Vendor Specific UUID. */
++#define SD_BLE_UUID_DECODE                       (BLE_SVC_BASE +   3)    /**< Decode UUID bytes. */
++#define SD_BLE_UUID_ENCODE                       (BLE_SVC_BASE +   4)    /**< Encode UUID bytes. */
++#define SD_BLE_VERSION_GET                       (BLE_SVC_BASE +   5)    /**< Get the local version information (company id, Link Layer Version, Link Layer Subversion). */
++#define SD_BLE_USER_MEM_REPLY                    (BLE_SVC_BASE +   6)    /**< User Memory Reply. */
++#define SD_BLE_OPT_SET                           (BLE_SVC_BASE +   7)    /**< Set a BLE option. */
++#define SD_BLE_OPT_GET                           (BLE_SVC_BASE +   8)    /**< Get a BLE option. */
+ 
+ /**
+  * @brief BLE Module Independent Event IDs.
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gap.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gap.h
+index 05b9f94..bd6dd8f 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gap.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gap.h
+@@ -25,35 +25,33 @@
+ /**
+  * @brief GAP API SVC numbers.
+  */
+-enum BLE_GAP_SVCS
+-{
+-  SD_BLE_GAP_ADDRESS_SET  = BLE_GAP_SVC_BASE,  /**< Set own Bluetooth Address. */
+-  SD_BLE_GAP_ADDRESS_GET,                      /**< Get own Bluetooth Address. */
+-  SD_BLE_GAP_ADV_DATA_SET,                     /**< Set Advertising Data. */
+-  SD_BLE_GAP_ADV_START,                        /**< Start Advertising. */
+-  SD_BLE_GAP_ADV_STOP,                         /**< Stop Advertising. */
+-  SD_BLE_GAP_CONN_PARAM_UPDATE,                /**< Connection Parameter Update. */
+-  SD_BLE_GAP_DISCONNECT,                       /**< Disconnect. */
+-  SD_BLE_GAP_TX_POWER_SET,                     /**< Set TX Power. */
+-  SD_BLE_GAP_APPEARANCE_SET,                   /**< Set Appearance. */
+-  SD_BLE_GAP_APPEARANCE_GET,                   /**< Get Appearance. */
+-  SD_BLE_GAP_PPCP_SET,                         /**< Set PPCP. */
+-  SD_BLE_GAP_PPCP_GET,                         /**< Get PPCP. */
+-  SD_BLE_GAP_DEVICE_NAME_SET,                  /**< Set Device Name. */
+-  SD_BLE_GAP_DEVICE_NAME_GET,                  /**< Get Device Name. */
+-  SD_BLE_GAP_AUTHENTICATE,                     /**< Initiate Pairing/Bonding. */
+-  SD_BLE_GAP_SEC_PARAMS_REPLY,                 /**< Reply with Security Parameters. */
+-  SD_BLE_GAP_AUTH_KEY_REPLY,                   /**< Reply with an authentication key. */
+-  SD_BLE_GAP_ENCRYPT,                          /**< Initiate encryption procedure. */
+-  SD_BLE_GAP_SEC_INFO_REPLY,                   /**< Reply with Security Information. */
+-  SD_BLE_GAP_CONN_SEC_GET,                     /**< Obtain connection security level. */
+-  SD_BLE_GAP_RSSI_START,                       /**< Start reporting of changes in RSSI. */ 
+-  SD_BLE_GAP_RSSI_STOP,                        /**< Stop reporting of changes in RSSI. */ 
+-  SD_BLE_GAP_SCAN_START,                       /**< Start Scanning. */
+-  SD_BLE_GAP_SCAN_STOP,                        /**< Stop Scanning. */
+-  SD_BLE_GAP_CONNECT,                          /**< Connect. */
+-  SD_BLE_GAP_CONNECT_CANCEL,                   /**< Cancel ongoing connection procedure. */
+-};
++typedef unsigned char BLE_GAP_SVCS; // enum
++#define SD_BLE_GAP_ADDRESS_SET                   (BLE_GAP_SVC_BASE +   0)    /**< Set own Bluetooth Address. */
++#define SD_BLE_GAP_ADDRESS_GET                   (BLE_GAP_SVC_BASE +   1)    /**< Get own Bluetooth Address. */
++#define SD_BLE_GAP_ADV_DATA_SET                  (BLE_GAP_SVC_BASE +   2)    /**< Set Advertising Data. */
++#define SD_BLE_GAP_ADV_START                     (BLE_GAP_SVC_BASE +   3)    /**< Start Advertising. */
++#define SD_BLE_GAP_ADV_STOP                      (BLE_GAP_SVC_BASE +   4)    /**< Stop Advertising. */
++#define SD_BLE_GAP_CONN_PARAM_UPDATE             (BLE_GAP_SVC_BASE +   5)    /**< Connection Parameter Update. */
++#define SD_BLE_GAP_DISCONNECT                    (BLE_GAP_SVC_BASE +   6)    /**< Disconnect. */
++#define SD_BLE_GAP_TX_POWER_SET                  (BLE_GAP_SVC_BASE +   7)    /**< Set TX Power. */
++#define SD_BLE_GAP_APPEARANCE_SET                (BLE_GAP_SVC_BASE +   8)    /**< Set Appearance. */
++#define SD_BLE_GAP_APPEARANCE_GET                (BLE_GAP_SVC_BASE +   9)    /**< Get Appearance. */
++#define SD_BLE_GAP_PPCP_SET                      (BLE_GAP_SVC_BASE +  10)    /**< Set PPCP. */
++#define SD_BLE_GAP_PPCP_GET                      (BLE_GAP_SVC_BASE +  11)    /**< Get PPCP. */
++#define SD_BLE_GAP_DEVICE_NAME_SET               (BLE_GAP_SVC_BASE +  12)    /**< Set Device Name. */
++#define SD_BLE_GAP_DEVICE_NAME_GET               (BLE_GAP_SVC_BASE +  13)    /**< Get Device Name. */
++#define SD_BLE_GAP_AUTHENTICATE                  (BLE_GAP_SVC_BASE +  14)    /**< Initiate Pairing/Bonding. */
++#define SD_BLE_GAP_SEC_PARAMS_REPLY              (BLE_GAP_SVC_BASE +  15)    /**< Reply with Security Parameters. */
++#define SD_BLE_GAP_AUTH_KEY_REPLY                (BLE_GAP_SVC_BASE +  16)    /**< Reply with an authentication key. */
++#define SD_BLE_GAP_ENCRYPT                       (BLE_GAP_SVC_BASE +  17)    /**< Initiate encryption procedure. */
++#define SD_BLE_GAP_SEC_INFO_REPLY                (BLE_GAP_SVC_BASE +  18)    /**< Reply with Security Information. */
++#define SD_BLE_GAP_CONN_SEC_GET                  (BLE_GAP_SVC_BASE +  19)    /**< Obtain connection security level. */
++#define SD_BLE_GAP_RSSI_START                    (BLE_GAP_SVC_BASE +  20)    /**< Start reporting of changes in RSSI. */
++#define SD_BLE_GAP_RSSI_STOP                     (BLE_GAP_SVC_BASE +  21)    /**< Stop reporting of changes in RSSI. */
++#define SD_BLE_GAP_SCAN_START                    (BLE_GAP_SVC_BASE +  22)    /**< Start Scanning. */
++#define SD_BLE_GAP_SCAN_STOP                     (BLE_GAP_SVC_BASE +  23)    /**< Stop Scanning. */
++#define SD_BLE_GAP_CONNECT                       (BLE_GAP_SVC_BASE +  24)    /**< Connect. */
++#define SD_BLE_GAP_CONNECT_CANCEL                (BLE_GAP_SVC_BASE +  25)    /**< Cancel ongoing connection procedure. */
+ 
+ /**
+  * @brief GAP Event IDs.
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gattc.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gattc.h
+index 3722206..3635b6a 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gattc.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gattc.h
+@@ -23,18 +23,16 @@
+  * @{ */
+ 
+ /**@brief GATTC API SVC numbers. */
+-enum BLE_GATTC_SVCS
+-{
+-  SD_BLE_GATTC_PRIMARY_SERVICES_DISCOVER = BLE_GATTC_SVC_BASE, /**< Primary Service Discovery. */
+-  SD_BLE_GATTC_RELATIONSHIPS_DISCOVER,                         /**< Relationship Discovery. */
+-  SD_BLE_GATTC_CHARACTERISTICS_DISCOVER,                       /**< Characteristic Discovery. */
+-  SD_BLE_GATTC_DESCRIPTORS_DISCOVER,                           /**< Characteristic Descriptor Discovery. */
+-  SD_BLE_GATTC_CHAR_VALUE_BY_UUID_READ,                        /**< Read Characteristic Value by UUID. */
+-  SD_BLE_GATTC_READ,                                           /**< Generic read. */
+-  SD_BLE_GATTC_CHAR_VALUES_READ,                               /**< Read multiple Characteristic Values. */
+-  SD_BLE_GATTC_WRITE,                                          /**< Generic write. */
+-  SD_BLE_GATTC_HV_CONFIRM                                      /**< Handle Value Confirmation. */
+-};
++typedef unsigned char BLE_GATTC_SVCS; // enum
++#define SD_BLE_GATTC_PRIMARY_SERVICES_DISCOVER   (BLE_GATTC_SVC_BASE +   0)    /**< Primary Service Discovery. */
++#define SD_BLE_GATTC_RELATIONSHIPS_DISCOVER      (BLE_GATTC_SVC_BASE +   1)    /**< Relationship Discovery. */
++#define SD_BLE_GATTC_CHARACTERISTICS_DISCOVER    (BLE_GATTC_SVC_BASE +   2)    /**< Characteristic Discovery. */
++#define SD_BLE_GATTC_DESCRIPTORS_DISCOVER        (BLE_GATTC_SVC_BASE +   3)    /**< Characteristic Descriptor Discovery. */
++#define SD_BLE_GATTC_CHAR_VALUE_BY_UUID_READ     (BLE_GATTC_SVC_BASE +   4)    /**< Read Characteristic Value by UUID. */
++#define SD_BLE_GATTC_READ                        (BLE_GATTC_SVC_BASE +   5)    /**< Generic read. */
++#define SD_BLE_GATTC_CHAR_VALUES_READ            (BLE_GATTC_SVC_BASE +   6)    /**< Read multiple Characteristic Values. */
++#define SD_BLE_GATTC_WRITE                       (BLE_GATTC_SVC_BASE +   7)    /**< Generic write. */
++#define SD_BLE_GATTC_HV_CONFIRM                  (BLE_GATTC_SVC_BASE +   8)    /**< Handle Value Confirmation. */
+ 
+ /**
+  * @brief GATT Client Event IDs.
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gatts.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gatts.h
+index a386363..cdef747 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gatts.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_gatts.h
+@@ -27,20 +27,18 @@
+ /**
+  * @brief GATTS API SVC numbers.
+  */
+-enum BLE_GATTS_SVCS
+-{
+-  SD_BLE_GATTS_SERVICE_ADD = BLE_GATTS_SVC_BASE, /**< Add a service. */
+-  SD_BLE_GATTS_INCLUDE_ADD,                      /**< Add an included service. */
+-  SD_BLE_GATTS_CHARACTERISTIC_ADD,               /**< Add a characteristic. */
+-  SD_BLE_GATTS_DESCRIPTOR_ADD,                   /**< Add a generic attribute. */
+-  SD_BLE_GATTS_VALUE_SET,                        /**< Set an attribute value. */
+-  SD_BLE_GATTS_VALUE_GET,                        /**< Get an attribute value. */
+-  SD_BLE_GATTS_HVX,                              /**< Handle Value Notification or Indication. */
+-  SD_BLE_GATTS_SERVICE_CHANGED,                  /**< Perform a Service Changed Indication to one or more peers. */
+-  SD_BLE_GATTS_RW_AUTHORIZE_REPLY,               /**< Reply to an authorization request for a read or write operation on one or more attributes. */ 
+-  SD_BLE_GATTS_SYS_ATTR_SET,                     /**< Set the persistent system attributes for a connection. */  
+-  SD_BLE_GATTS_SYS_ATTR_GET,                     /**< Get updated persistent system attributes after terminating a connection. */
+-};
++typedef unsigned char BLE_GATTS_SVCS; // enum
++#define SD_BLE_GATTS_SERVICE_ADD                 (BLE_GATTS_SVC_BASE +   0)    /**< Add a service. */
++#define SD_BLE_GATTS_INCLUDE_ADD                 (BLE_GATTS_SVC_BASE +   1)    /**< Add an included service. */
++#define SD_BLE_GATTS_CHARACTERISTIC_ADD          (BLE_GATTS_SVC_BASE +   2)    /**< Add a characteristic. */
++#define SD_BLE_GATTS_DESCRIPTOR_ADD              (BLE_GATTS_SVC_BASE +   3)    /**< Add a generic attribute. */
++#define SD_BLE_GATTS_VALUE_SET                   (BLE_GATTS_SVC_BASE +   4)    /**< Set an attribute value. */
++#define SD_BLE_GATTS_VALUE_GET                   (BLE_GATTS_SVC_BASE +   5)    /**< Get an attribute value. */
++#define SD_BLE_GATTS_HVX                         (BLE_GATTS_SVC_BASE +   6)    /**< Handle Value Notification or Indication. */
++#define SD_BLE_GATTS_SERVICE_CHANGED             (BLE_GATTS_SVC_BASE +   7)    /**< Perform a Service Changed Indication to one or more peers. */
++#define SD_BLE_GATTS_RW_AUTHORIZE_REPLY          (BLE_GATTS_SVC_BASE +   8)    /**< Reply to an authorization request for a read or write operation on one or more attributes. */
++#define SD_BLE_GATTS_SYS_ATTR_SET                (BLE_GATTS_SVC_BASE +   9)    /**< Set the persistent system attributes for a connection. */
++#define SD_BLE_GATTS_SYS_ATTR_GET                (BLE_GATTS_SVC_BASE +  10)    /**< Get updated persistent system attributes after terminating a connection. */
+ 
+ /**
+  * @brief GATT Server Event IDs.
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_l2cap.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_l2cap.h
+index 600a820..9a78a29 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_l2cap.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/ble_l2cap.h
+@@ -24,14 +24,12 @@
+  * @{ */
+ 
+ /**@brief L2CAP API SVC numbers. */
+-enum BLE_L2CAP_SVCS 
+-{
+-  SD_BLE_L2CAP_CH_CONN_REPLY = BLE_L2CAP_SVC_BASE,      /**< Reply to a Connection Request. */
+-  SD_BLE_L2CAP_CH_DISCONNECT,                           /**< Disconnect a channel. */
+-  SD_BLE_L2CAP_CH_TX,                                   /**< Transmit a packet. */
+-  SD_BLE_L2CAP_CH_RX_COMPLETE,                          /**< Notify the stack of the completion of reception. */
+-  SD_BLE_L2CAP_CH_RX_CREDITS_ISSUE                      /**< Issue credits. */
+-};
++typedef unsigned char BLE_L2CAP_SVCS; // enum
++#define SD_BLE_L2CAP_CH_CONN_REPLY               (BLE_L2CAP_SVC_BASE +   0)    /**< Reply to a Connection Request. */
++#define SD_BLE_L2CAP_CH_DISCONNECT               (BLE_L2CAP_SVC_BASE +   1)    /**< Disconnect a channel. */
++#define SD_BLE_L2CAP_CH_TX                       (BLE_L2CAP_SVC_BASE +   2)    /**< Transmit a packet. */
++#define SD_BLE_L2CAP_CH_RX_COMPLETE              (BLE_L2CAP_SVC_BASE +   3)    /**< Notify the stack of the completion of reception. */
++#define SD_BLE_L2CAP_CH_RX_CREDITS_ISSUE         (BLE_L2CAP_SVC_BASE +   4)    /**< Issue credits. */
+ 
+ /**@brief L2CAP Event IDs. */
+ enum BLE_L2CAP_EVTS
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_sdm.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_sdm.h
+index b78cc52..ff79343 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_sdm.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_sdm.h
+@@ -35,14 +35,12 @@
+  * @{ */
+ 
+ /**@brief nRF SoftDevice Manager API SVC numbers. */
+-enum NRF_SD_SVCS
+-{
+-  SD_SOFTDEVICE_ENABLE = SDM_SVC_BASE, /**< ::sd_softdevice_enable */
+-  SD_SOFTDEVICE_DISABLE,               /**< ::sd_softdevice_disable */
+-  SD_SOFTDEVICE_IS_ENABLED,            /**< ::sd_softdevice_is_enabled */
+-  SD_SOFTDEVICE_FORWARD_TO_APPLICATION,/**< ::sd_softdevice_forward_to_application */
+-  SVC_SDM_LAST                         /**< Placeholder for last SDM SVC */
+-};
++typedef unsigned char NRF_SD_SVCS; // enum
++#define SD_SOFTDEVICE_ENABLE                     (SDM_SVC_BASE +   0)    /**< ::sd_softdevice_enable */
++#define SD_SOFTDEVICE_DISABLE                    (SDM_SVC_BASE +   1)    /**< ::sd_softdevice_disable */
++#define SD_SOFTDEVICE_IS_ENABLED                 (SDM_SVC_BASE +   2)    /**< ::sd_softdevice_is_enabled */
++#define SD_SOFTDEVICE_FORWARD_TO_APPLICATION     (SDM_SVC_BASE +   3)    /**< ::sd_softdevice_forward_to_application */
++#define SVC_SDM_LAST                             (SDM_SVC_BASE +   4)    /**< Placeholder for last SDM SVC */
+ 
+ /**@brief Possible lfclk oscillator sources. */
+ enum NRF_CLOCK_LFCLKSRCS
+diff --git a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_soc.h b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_soc.h
+index 0983905..79ea73d 100644
+--- a/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_soc.h
++++ b/nrf51_iot_sdk_0.7.0/Nordic/nrf51/components/softdevice/s1xx_iot/headers/nrf_soc.h
+@@ -60,61 +60,59 @@
+  * @{ */
+ 
+ /**@brief The SVC numbers used by the SVC functions in the SoC library. */
+-enum NRF_SOC_SVCS
+-{
+-  SD_FLASH_PAGE_ERASE = SOC_SVC_BASE,
+-  SD_FLASH_WRITE,
+-  SD_FLASH_PROTECT,
+-  SD_MUTEX_NEW = SOC_SVC_BASE_NOT_AVAILABLE,
+-  SD_MUTEX_ACQUIRE,
+-  SD_MUTEX_RELEASE,
+-  SD_NVIC_ENABLEIRQ,
+-  SD_NVIC_DISABLEIRQ,
+-  SD_NVIC_GETPENDINGIRQ,
+-  SD_NVIC_SETPENDINGIRQ,
+-  SD_NVIC_CLEARPENDINGIRQ,
+-  SD_NVIC_SETPRIORITY,
+-  SD_NVIC_GETPRIORITY,
+-  SD_NVIC_SYSTEMRESET,
+-  SD_NVIC_CRITICAL_REGION_ENTER,
+-  SD_NVIC_CRITICAL_REGION_EXIT,
+-  SD_RAND_APPLICATION_POOL_CAPACITY,
+-  SD_RAND_APPLICATION_BYTES_AVAILABLE,
+-  SD_RAND_APPLICATION_GET_VECTOR,
+-  SD_POWER_MODE_SET,
+-  SD_POWER_SYSTEM_OFF,
+-  SD_POWER_RESET_REASON_GET,
+-  SD_POWER_RESET_REASON_CLR,
+-  SD_POWER_POF_ENABLE,
+-  SD_POWER_POF_THRESHOLD_SET,
+-  SD_POWER_RAMON_SET,
+-  SD_POWER_RAMON_CLR,
+-  SD_POWER_RAMON_GET,
+-  SD_POWER_GPREGRET_SET,
+-  SD_POWER_GPREGRET_CLR,
+-  SD_POWER_GPREGRET_GET,
+-  SD_POWER_DCDC_MODE_SET,
+-  SD_APP_EVT_WAIT,
+-  SD_CLOCK_HFCLK_REQUEST,
+-  SD_CLOCK_HFCLK_RELEASE,
+-  SD_CLOCK_HFCLK_IS_RUNNING,
+-  SD_PPI_CHANNEL_ENABLE_GET,
+-  SD_PPI_CHANNEL_ENABLE_SET,
+-  SD_PPI_CHANNEL_ENABLE_CLR,
+-  SD_PPI_CHANNEL_ASSIGN,
+-  SD_PPI_GROUP_TASK_ENABLE,
+-  SD_PPI_GROUP_TASK_DISABLE,
+-  SD_PPI_GROUP_ASSIGN,
+-  SD_PPI_GROUP_GET,
+-  SD_RADIO_NOTIFICATION_CFG_SET,
+-  SD_ECB_BLOCK_ENCRYPT,
+-  SD_RADIO_SESSION_OPEN,
+-  SD_RADIO_SESSION_CLOSE,
+-  SD_RADIO_REQUEST,
+-  SD_EVT_GET,
+-  SD_TEMP_GET,
+-  SVC_SOC_LAST
+-};
++typedef unsigned char NRF_SOC_SVCS; // enum
++#define SD_FLASH_PAGE_ERASE                      (SOC_SVC_BASE +   0)
++#define SD_FLASH_WRITE                           (SOC_SVC_BASE +   1)
++#define SD_FLASH_PROTECT                         (SOC_SVC_BASE +   2)
++#define SD_MUTEX_NEW                             (SOC_SVC_BASE_NOT_AVAILABLE +   0)
++#define SD_MUTEX_ACQUIRE                         (SOC_SVC_BASE_NOT_AVAILABLE +   1)
++#define SD_MUTEX_RELEASE                         (SOC_SVC_BASE_NOT_AVAILABLE +   2)
++#define SD_NVIC_ENABLEIRQ                        (SOC_SVC_BASE_NOT_AVAILABLE +   3)
++#define SD_NVIC_DISABLEIRQ                       (SOC_SVC_BASE_NOT_AVAILABLE +   4)
++#define SD_NVIC_GETPENDINGIRQ                    (SOC_SVC_BASE_NOT_AVAILABLE +   5)
++#define SD_NVIC_SETPENDINGIRQ                    (SOC_SVC_BASE_NOT_AVAILABLE +   6)
++#define SD_NVIC_CLEARPENDINGIRQ                  (SOC_SVC_BASE_NOT_AVAILABLE +   7)
++#define SD_NVIC_SETPRIORITY                      (SOC_SVC_BASE_NOT_AVAILABLE +   8)
++#define SD_NVIC_GETPRIORITY                      (SOC_SVC_BASE_NOT_AVAILABLE +   9)
++#define SD_NVIC_SYSTEMRESET                      (SOC_SVC_BASE_NOT_AVAILABLE +  10)
++#define SD_NVIC_CRITICAL_REGION_ENTER            (SOC_SVC_BASE_NOT_AVAILABLE +  11)
++#define SD_NVIC_CRITICAL_REGION_EXIT             (SOC_SVC_BASE_NOT_AVAILABLE +  12)
++#define SD_RAND_APPLICATION_POOL_CAPACITY        (SOC_SVC_BASE_NOT_AVAILABLE +  13)
++#define SD_RAND_APPLICATION_BYTES_AVAILABLE      (SOC_SVC_BASE_NOT_AVAILABLE +  14)
++#define SD_RAND_APPLICATION_GET_VECTOR           (SOC_SVC_BASE_NOT_AVAILABLE +  15)
++#define SD_POWER_MODE_SET                        (SOC_SVC_BASE_NOT_AVAILABLE +  16)
++#define SD_POWER_SYSTEM_OFF                      (SOC_SVC_BASE_NOT_AVAILABLE +  17)
++#define SD_POWER_RESET_REASON_GET                (SOC_SVC_BASE_NOT_AVAILABLE +  18)
++#define SD_POWER_RESET_REASON_CLR                (SOC_SVC_BASE_NOT_AVAILABLE +  19)
++#define SD_POWER_POF_ENABLE                      (SOC_SVC_BASE_NOT_AVAILABLE +  20)
++#define SD_POWER_POF_THRESHOLD_SET               (SOC_SVC_BASE_NOT_AVAILABLE +  21)
++#define SD_POWER_RAMON_SET                       (SOC_SVC_BASE_NOT_AVAILABLE +  22)
++#define SD_POWER_RAMON_CLR                       (SOC_SVC_BASE_NOT_AVAILABLE +  23)
++#define SD_POWER_RAMON_GET                       (SOC_SVC_BASE_NOT_AVAILABLE +  24)
++#define SD_POWER_GPREGRET_SET                    (SOC_SVC_BASE_NOT_AVAILABLE +  25)
++#define SD_POWER_GPREGRET_CLR                    (SOC_SVC_BASE_NOT_AVAILABLE +  26)
++#define SD_POWER_GPREGRET_GET                    (SOC_SVC_BASE_NOT_AVAILABLE +  27)
++#define SD_POWER_DCDC_MODE_SET                   (SOC_SVC_BASE_NOT_AVAILABLE +  28)
++#define SD_APP_EVT_WAIT                          (SOC_SVC_BASE_NOT_AVAILABLE +  29)
++#define SD_CLOCK_HFCLK_REQUEST                   (SOC_SVC_BASE_NOT_AVAILABLE +  30)
++#define SD_CLOCK_HFCLK_RELEASE                   (SOC_SVC_BASE_NOT_AVAILABLE +  31)
++#define SD_CLOCK_HFCLK_IS_RUNNING                (SOC_SVC_BASE_NOT_AVAILABLE +  32)
++#define SD_PPI_CHANNEL_ENABLE_GET                (SOC_SVC_BASE_NOT_AVAILABLE +  33)
++#define SD_PPI_CHANNEL_ENABLE_SET                (SOC_SVC_BASE_NOT_AVAILABLE +  34)
++#define SD_PPI_CHANNEL_ENABLE_CLR                (SOC_SVC_BASE_NOT_AVAILABLE +  35)
++#define SD_PPI_CHANNEL_ASSIGN                    (SOC_SVC_BASE_NOT_AVAILABLE +  36)
++#define SD_PPI_GROUP_TASK_ENABLE                 (SOC_SVC_BASE_NOT_AVAILABLE +  37)
++#define SD_PPI_GROUP_TASK_DISABLE                (SOC_SVC_BASE_NOT_AVAILABLE +  38)
++#define SD_PPI_GROUP_ASSIGN                      (SOC_SVC_BASE_NOT_AVAILABLE +  39)
++#define SD_PPI_GROUP_GET                         (SOC_SVC_BASE_NOT_AVAILABLE +  40)
++#define SD_RADIO_NOTIFICATION_CFG_SET            (SOC_SVC_BASE_NOT_AVAILABLE +  41)
++#define SD_ECB_BLOCK_ENCRYPT                     (SOC_SVC_BASE_NOT_AVAILABLE +  42)
++#define SD_RADIO_SESSION_OPEN                    (SOC_SVC_BASE_NOT_AVAILABLE +  43)
++#define SD_RADIO_SESSION_CLOSE                   (SOC_SVC_BASE_NOT_AVAILABLE +  44)
++#define SD_RADIO_REQUEST                         (SOC_SVC_BASE_NOT_AVAILABLE +  45)
++#define SD_EVT_GET                               (SOC_SVC_BASE_NOT_AVAILABLE +  46)
++#define SD_TEMP_GET                              (SOC_SVC_BASE_NOT_AVAILABLE +  47)
++#define SVC_SOC_LAST                             (SOC_SVC_BASE_NOT_AVAILABLE +  48)
+ 
+ /**@brief Possible values of a ::nrf_mutex_t. */
+ enum NRF_MUTEX_VALUES
