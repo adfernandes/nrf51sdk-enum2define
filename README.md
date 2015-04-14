@@ -4,7 +4,7 @@ The patch files and tools in this repository were created to solve the specific 
 
 Therefore, I wrote a simple C-header parser to change the `enum` statements used by Nordic into `#define` constants. These work fine for all versions (4.7, 4.8, and 4.9) of the [GNU Tools for ARM Embedded Processors](https://launchpad.net/gcc-arm-embedded) for both the `gcc` and `g++` compilers.
 
-Note that on the Cortex-M0, `SVC` call operands must be in the range of 0-255, and hence fit in an `unsigned char` which is what we pick for our `typedef`. This choice follows the Keil ARMCC 5.05 default [convention for enums](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491i/Babjddhe.html). If you want to change this `typedef`, be aware that ISO-C and ISO-C++ have _substantially_ different rules for inferring the type of an `enum`, and as of `g++-4.9` using the `enum : unsigned char { ... }` syntax of `C++11` doe **not** work with the inline assembler for the `SVC` call.
+Note that on the Cortex-M0, `SVC` call operands must be in the range of 0-255, and hence fit in an `unsigned char` which is what we pick for our `typedef`. This choice follows the Keil ARMCC 5.05 default [convention for enums](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491i/Babjddhe.html). If you want to change this `typedef`, be aware that ISO-C and ISO-C++ have _substantially_ different rules for inferring the type of an `enum`, and as of `g++-4.9` using the `enum : unsigned char { ... }` syntax of `C++11` does **not** work with the inline assembler for the `SVC` call.
 
 These are the **only** changes I've made to the SDKs as distributed by Nordic.
 
